@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ch-ZN">
+<!--<![endif]-->
+  <head>
+    <meta charset='utf-8'>
+    <title>薪福多-幸福薪选择 工资代发 福利增值服务 员工管理、发工资条等</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="Cache-Control" content="max-age=7200">
+    <meta name="keywords" content="薪福多,人力资源,薪酬,考勤管理,工资代发,福利增值服务,员工管理,发工资条等">
+    <meta name="description" content="薪福多是一款基于互联网、云计算技术，以企业员工薪酬理财增值服务为核心，为企业提供薪酬管理系统、薪酬理财增值、福利升级、信用消费等应用，形成企业员工在此平台上的薪酬查询、理财、商城消费等闭环">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel='stylesheet' href='/css/style.css' />
+  </head>
+  <body>
+    <div id="header">
+      <% include public/header.ejs %>
+    </div>
+    <div class="banner-news"></div>
+    <div id="container">
+      <div class="newlist">
+        <ul>
+          <% data.list.forEach(function(news){ %>
+            <li>
+              <img src=<%= news.list_img %> height="180" width="280" alt="">
+              <h4><a href="/detail?id=<%= news.id%>" target="_blank"><%= news.title %></a></h4>
+              <p class="published_at">发布时间：<%= news.published_at %></p>
+              <p class="description"><%= news.description %></p>
+              <a href="/detail?id=<%= news.id%>" target="_blank" class="more">MORE</a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+    <div class="pagination">
+      <ul style="width:<%= ( data.last_page > 5 ) ? '288px' : 42 * ( Number(data.last_page) + 2 ) + 'px' %>">
+        <li class="prev"><a href="/news?page=<%= (data.current_page == 1 ) ? 1 : Number(data.current_page) - 1 %>">&laquo;</a></li>
+        <% var s_index = (Math.ceil(data.current_page / 5) - 1 ) * 5 + 1; %>
+        <% for(var i = s_index ; i < s_index + 5 ; i++) { %>
+          <% if(i <= data.last_page) { %>
+            <% if(data.current_page == i){ %>
+              <li class="active" data-sign="<%= i %>"><a href="/news?page=<%= i %>"><%= i %></a></li>
+            <% } else { %>
+              <li data-sign="<%= i %>"><a href="/news?page=<%= i%>"><%= i %></a></li>
+            <% }%>
+          <% } %>
+        <% } %>
+        <li class="next"><a href="/news?page=<%= (data.current_page == data.last_page ) ? data.last_page : Number(data.current_page) + 1 %>">&raquo;</a></li>
+      </ul>
+    </div>
+    <div id="footer">
+      <% include public/footer.ejs %>
+    </div>
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src='/js/xinfuduo.js'></script>
+  </body>
+</html>

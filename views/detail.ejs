@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ch-ZN">
+<!--<![endif]-->
+  <head>
+    <meta charset='utf-8'>
+    <title>薪福多-行业动态</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="Cache-Control" content="max-age=7200">
+    <meta name="keywords" content="薪福多,人力资源,薪酬,考勤管理,工资代发,福利增值服务,员工管理,发工资条等">
+    <meta name="description" content="薪福多是一款基于互联网、云计算技术，以企业员工薪酬理财增值服务为核心，为企业提供薪酬管理系统、薪酬理财增值、福利升级、信用消费等应用，形成企业员工在此平台上的薪酬查询、理财、商城消费等闭环">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel='stylesheet' href='/css/style.css' />
+  </head>
+  <body>
+    <div id="header">
+      <% include public/header.ejs %>
+    </div>
+    <div class="banner-news"></div>
+    <div id="detail-content">
+      <div class="title"><%= data.info.title%></div>
+      <div class="published_at">
+        <span><%= data.info.published_at%></span>
+        分享到：
+        <div class="bdsharebuttonbox">
+          <a href="#" class="bds_more" data-cmd="more"></a>
+          <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+          <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+          <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+          <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+          <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+        </div>
+        <script>
+          window._bd_share_config = {
+            "common": {
+              "bdSnsKey": {},
+              "bdText": "",
+              "bdMini": "2",
+              "bdMiniList": false,
+              "bdPic": "",
+              "bdStyle": "0",
+              "bdSize": "16"
+            },
+            "share": {}
+          };
+          with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+        </script>
+      </div>
+      <div class="content" id="content">
+        <%- data.info.content %>
+      </div>
+      <div class="backtop">
+        <div class="btn"></div>
+      </div>
+      <% if(data.prev.id) {%>
+        <div class="prev">上一篇：<a href="/detail?id=<%= data.prev.id %>"><%= data.prev.title %></a></div>
+      <% } %>
+      <% if(data.next.id) { %>
+        <div class="next">下一篇：<a href="/detail?id=<%= data.next.id %>"><%= data.next.title %></a></div>
+      <% } %>
+    </div>
+    <div id="footer">
+      <% include public/footer.ejs %>
+    </div>
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src='/js/xinfuduo.js'></script>
+    <script type="text/javascript">
+      Xinfud.NewsList.backTop();
+    </script>
+  </body>
+</html>
